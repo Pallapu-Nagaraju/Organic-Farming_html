@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Agriculture - Login/Signup</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="container" id="form-container">
+    <div class="form-container" id="login-form">
+        <h1>Login</h1>
+        <div class="slogan">“Grow Green, Eat Clean!”</div>
+        <form id="login-form" onsubmit="return false;">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="button" value="Login" onclick="redirectToHome()">
+        </form>
+        <div class="footer">
+            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a></p>
+        </div>
+    </div>
+
+    <div class="form-container" id="signup-form" style="display: none;">
+        <h1>Signup</h1>
+        <div class="slogan">“Grow Green, Eat Clean!”</div>
+        <form action="/signup" method="POST">
+            <div class="input-group">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <input type="submit" value="Create Account">
+        </form>
+        <div class="footer">
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSignup() {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('signup-form').style.display = 'block';
+        document.getElementById('form-container').style.transform = 'translateX(700px)';
+        document.body.style.background = "url('https://img.freepik.com/premium-photo/agriculture-plant-seedling-growing-step-concept-with-mountain-sunrise-background_34152-3126.jpg') no-repeat fixed"; 
+        document.body.style.backgroundSize = "cover"; 
+    }
+
+    function showLogin() {
+        document.getElementById('signup-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('form-container').style.transform = 'translateX(0)';
+        document.body.style.background = "url(' https://t3.ftcdn.net/jpg/08/04/22/42/360_F_804224219_QdNW7DlskOWvDzon8xM4LQuxX62bdvdm.jpg') no-repeat center center fixed"; 
+        document.body.style.backgroundSize = "cover";
+    }
+
+    function redirectToHome() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username && password) {
+            window.location.href = "home.html"; 
+        } else {
+            alert("Please enter both username and password.");      
+        }
+    }
+</script>
+
+</body>
+</html>
